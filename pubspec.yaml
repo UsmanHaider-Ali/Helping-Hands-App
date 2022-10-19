@@ -64,8 +64,6 @@ flutter:
     - assets/images/onBoardingImage1.svg
     - assets/images/onBoardingImage2.svg
     - assets/images/onBoardingImage3.svg
-    - assets/images/onBoardingSelectedInc.svg
-    - assets/images/onBoardingUnselectedInc.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
