@@ -46,7 +46,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: ColorsManager.statusBarColor,
           statusBarBrightness: Brightness.light,
-          statusBarIconBrightness: Brightness.light,
+          statusBarIconBrightness: Brightness.dark,
         ),
         title: Padding(
           padding: const EdgeInsets.all(
