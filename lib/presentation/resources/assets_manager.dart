@@ -9,4 +9,7 @@ class ImagesAssetsManager {
       '${imagesBasePath}onBoardingImage2.svg';
   static const String onBoardingImage3 =
       '${imagesBasePath}onBoardingImage3.svg';
+
+  static const String facebookIcon = '${imagesBasePath}facebook_icon.svg';
+  static const String googleIcon = '${imagesBasePath}google_icon.svg';
 }

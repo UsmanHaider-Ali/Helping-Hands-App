@@ -40,7 +40,7 @@ ThemeData getApplicationTheme() {
       ),
     ),
 
-    //button theme
+    //buttonTheme
     buttonTheme: ButtonThemeData(
       shape: StadiumBorder(),
       buttonColor: ColorsManager.primary,
@@ -48,92 +48,133 @@ ThemeData getApplicationTheme() {
       disabledColor: ColorsManager.grey1,
     ),
 
-    //elevated button theme
+    //text theme
+    textTheme: TextTheme(
+      bodySmall: TextStyle(
+        fontSize: 100,
+      ),
+      // displayMedium: getBoldStyle(
+      //   color: ColorsManager.displayMediumColor,
+      //   fontSize: FontsSizeManager.displayMediumTextSize,
+      // ),
+      // headlineMedium: getSemiBoldStyle(
+      //   color: ColorsManager.headlineMediumColor,
+      //   fontSize: FontsSizeManager.headlineMediumTextSize,
+      // ),
+      // titleMedium: getMediumStyle(
+      //   color: ColorsManager.titleMediumColor,
+      //   fontSize: FontsSizeManager.titleMediumTextSize,
+      // ),
+
+      // //label
+      // labelLarge: getRegularStyle(
+      //   color: ColorsManager.labelLargeColor,
+      //   fontSize: FontsSizeManager.labelMediumTextSize,
+      // ),
+      // labelMedium: getRegularStyle(
+      //   color: ColorsManager.labelMediumColor,
+      //   fontSize: FontsSizeManager.labelMediumTextSize,
+      // ),
+      // labelSmall: getRegularStyle(
+      //   color: ColorsManager.labelSmallColor,
+      //   fontSize: FontsSizeManager.labelMediumTextSize,
+      // ),
+
+      // //body
+      // bodyLarge: getLightStyle(
+      //   color: ColorsManager.bodyLargeColor,
+      //   fontSize: FontsSizeManager.bodyLargeTextSize,
+      // ),
+      // bodyMedium: getLightStyle(
+      //   color: ColorsManager.bodyMediumColor,
+      //   fontSize: FontsSizeManager.bodyMediumTextSize,
+      // ),
+      // bodySmall: getLightStyle(
+      //   color: ColorsManager.bodySmallColor,
+      //   fontSize: FontsSizeManager.bodySmallTextSize,
+      // ),
+    ),
+
+    //elevatedButtonTheme
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        textStyle: getRegularStyle(
-          color: ColorsManager.white,
+        textStyle: getSemiBoldStyle(
+          color: ColorsManager.filledButtonTextColor,
+          fontSize: FontsSizeManager.filledButtonTextSize,
         ),
-        // primary: ColorsManager.primary,
+        minimumSize: const Size.fromHeight(
+          SizesManager.filledButtonfromHeight,
+        ),
+        backgroundColor: ColorsManager.filledButtonBackgroundColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
-            SizesManager.s8,
+            SizesManager.defaultRadious,
           ),
         ),
       ),
     ),
 
-    //text theme
-    textTheme: TextTheme(
-      headline1: getSemiBoldStyle(
-        color: ColorsManager.darkGrey,
-        fontSize: FontsSizeManager.s16,
-      ),
-      subtitle1: getMediumStyle(
-        color: ColorsManager.lightGrey,
-        fontSize: FontsSizeManager.s14,
-      ),
-      caption: getRegularStyle(
-        color: ColorsManager.grey1,
-      ),
-      bodyText1: getRegularStyle(
-        color: ColorsManager.grey,
-      ),
-    ),
-
-    //input theme/text field
+    //inputDecorationTheme
     inputDecorationTheme: InputDecorationTheme(
-      contentPadding: EdgeInsets.all(
-        PaddingsManager.p8,
+      contentPadding: const EdgeInsets.symmetric(
+        vertical: PaddingsManager.inputFieldVerticalPadding,
+        horizontal: PaddingsManager.inputFieldHorizontalPadding,
       ),
+      filled: true,
+      fillColor: ColorsManager.inputFieldFillColor,
       hintStyle: getRegularStyle(
-        color: ColorsManager.grey1,
+        color: ColorsManager.inputFieldHintColor,
+        fontSize: FontsSizeManager.inputFieldHintSize,
       ),
       labelStyle: getRegularStyle(
-        color: ColorsManager.darkGrey,
+        color: ColorsManager.inputFieldLabelColor,
+        fontSize: FontsSizeManager.inputFieldLabelSize,
       ),
       errorStyle: getRegularStyle(
-        color: ColorsManager.error,
+        color: ColorsManager.inputFieldErrroColor,
+        fontSize: FontsSizeManager.inputFieldErrorSize,
       ),
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(
-          color: ColorsManager.grey,
-          width: SizesManager.s1_5,
+          color: ColorsManager.inputFieldBorderColor,
+          width: SizesManager.defaultRadious,
         ),
-        borderRadius: BorderRadius.all(
-          Radius.circular(SizesManager.s8),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(
+            SizesManager.defaultRadious,
+          ),
         ),
       ),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(
-          color: ColorsManager.primary,
-          width: SizesManager.s1_5,
+          color: ColorsManager.inputFieldBorderColor,
+          width: SizesManager.inputFieldBorderWidth,
         ),
-        borderRadius: BorderRadius.all(
+        borderRadius: const BorderRadius.all(
           Radius.circular(
-            SizesManager.s8,
+            SizesManager.defaultRadious,
           ),
         ),
       ),
       errorBorder: OutlineInputBorder(
         borderSide: BorderSide(
-          color: ColorsManager.error,
-          width: SizesManager.s1_5,
+          color: ColorsManager.inputFieldErrroColor,
+          width: SizesManager.inputFieldBorderWidth,
         ),
-        borderRadius: BorderRadius.all(
+        borderRadius: const BorderRadius.all(
           Radius.circular(
-            SizesManager.s8,
+            SizesManager.defaultRadious,
           ),
         ),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderSide: BorderSide(
-          color: ColorsManager.primary,
-          width: SizesManager.s1_5,
+          color: ColorsManager.inputFieldErrroColor,
+          width: SizesManager.inputFieldBorderWidth,
         ),
-        borderRadius: BorderRadius.all(
+        borderRadius: const BorderRadius.all(
           Radius.circular(
-            SizesManager.s8,
+            SizesManager.defaultRadious,
           ),
         ),
       ),

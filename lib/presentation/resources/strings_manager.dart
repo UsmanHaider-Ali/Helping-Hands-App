@@ -25,6 +25,9 @@ class StringsManager {
   static const String passwordLabel = 'Password';
   static const String passwordHint = 'Enter Password';
 
+  static const String login = 'Login';
+  static const String orContinueWith = 'Or continue with';
 
-
+  static const String dontHaveAccount = "Don't have an account?";
+  static const String signUp = 'Sign Up';
 }
