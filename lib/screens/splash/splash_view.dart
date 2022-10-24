@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import '/presentation/resources/assets_manager.dart';
-import '/presentation/resources/routes_manager.dart';
+import '../../resources/assets_manager.dart';
+import '../../resources/routes_manager.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -16,7 +16,7 @@ class _SplashViewState extends State<SplashView> {
 
   _startDelay() {
     _timer = Timer(
-        Duration(seconds: 3),
+        const Duration(seconds: 3),
         (() => {
               Navigator.pushReplacementNamed(
                   context, RoutesManager.onBoardingRoute)
@@ -37,11 +37,11 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Image(
           image: AssetImage(
-            ImagesAssetsManager.splashAppLogo,
+            ImageAssetsManager.appLogo,
           ),
         ),
       ),

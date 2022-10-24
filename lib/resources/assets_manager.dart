@@ -1,7 +1,7 @@
 const String imagesBasePath = 'assets/images/';
 
-class ImagesAssetsManager {
-  static const String splashAppLogo = '${imagesBasePath}app_logo.png';
+class ImageAssetsManager {
+  static const String appLogo = '${imagesBasePath}app_logo.png';
 
   static const String onBoardingImage1 =
       '${imagesBasePath}onBoardingImage1.svg';

@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:helping_hands_app/test.dart';
 
-import 'app/my_app.dart';
+import 'resources/routes_manager.dart';
+import 'resources/themes_manager.dart';
 
 void main() {
-  runApp(MaterialApp(
-    // home: MyApp(),
-    home: Test(),
-  ));
+  runApp(
+    const MaterialApp(
+      home: MyApp(),
+    ),
+  );
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      onGenerateRoute: RoutesGenerator.getRoute,
+      initialRoute: RoutesManager.splashRoute,
+      theme: getApplicationTheme(),
+    );
+  }
 }
