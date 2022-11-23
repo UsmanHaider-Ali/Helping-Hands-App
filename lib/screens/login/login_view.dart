@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:helping_hands_app/resources/dimens_manager.dart';
-import 'package:helping_hands_app/resources/routes_manager.dart';
+
 import '../../resources/assets_manager.dart';
+import '../../resources/dimens_manager.dart';
+import '../../resources/routes_manager.dart';
 import '../../resources/strings_manager.dart';
 
 class LoginView extends StatefulWidget {
@@ -102,7 +103,7 @@ class _LoginViewState extends State<LoginView> {
                     RoutesManager.mainRoute,
                   );
                 },
-                child: Text(
+                child: const Text(
                   StringsManager.login,
                 ),
               ),

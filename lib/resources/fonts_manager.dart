@@ -25,5 +25,5 @@ class FontSizesManager {
 
   static const double bodyLargeTextSize = 15.0;
   static const double bodyMediumTextSize = 14.5;
-  static const double bodySmallTextSize = 14.0;
+  static const double bodySmallTextSize = 12.0;
 }

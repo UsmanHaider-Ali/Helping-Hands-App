@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import '/resources/styles_manager.dart';
 import 'colors_manager.dart';
 import 'dimens_manager.dart';
@@ -17,7 +18,8 @@ ThemeData getApplicationTheme() {
     //screen/view background color
     scaffoldBackgroundColor: ColorsManager.screenColor,
     //ripple color
-    splashColor: ColorsManager.primaryColor,
+    splashColor: Colors.transparent,
+    highlightColor: Colors.transparent,
 
     //will use for disabled button
     // accentColor: ColorsManager.grey,
@@ -63,6 +65,10 @@ ThemeData getApplicationTheme() {
       titleMedium: getMediumStyle(
         color: ColorsManager.primaryTextColor,
         fontSize: FontSizesManager.titleTextSize,
+      ),
+      titleSmall: getMediumStyle(
+        color: ColorsManager.primaryTextColor,
+        fontSize: FontSizesManager.bodySmallTextSize,
       ),
       labelLarge: getMediumStyle(
         color: ColorsManager.primaryTextColor,

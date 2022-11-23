@@ -6,13 +6,13 @@ import 'resources/themes_manager.dart';
 void main() {
   runApp(
     const MaterialApp(
-      home: MyApp(),
+      home: App(),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
