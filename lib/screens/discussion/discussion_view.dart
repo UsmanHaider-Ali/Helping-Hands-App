@@ -40,7 +40,7 @@ class _DiscussionViewState extends State<DiscussionView> {
           Icons.add,
         ),
         onPressed: () {
-          // Navigator.pushNamed(context, RoutesManager.startCampaignRoute);
+          Navigator.pushNamed(context, RoutesManager.postQuestionRoute);
         },
       ),
     );

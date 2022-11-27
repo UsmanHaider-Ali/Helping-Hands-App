@@ -5,6 +5,7 @@ import 'package:helping_hands_app/screens/privacy_policy/privacy_policy_view.dar
 import 'package:helping_hands_app/screens/profile/update_user_profile_view.dart';
 import 'package:helping_hands_app/screens/profile/user_profile_view.dart';
 import 'package:helping_hands_app/screens/projects/project_details_view.dart';
+import 'package:helping_hands_app/screens/question/post_question_view.dart';
 import 'package:helping_hands_app/screens/success_stories/success_stories_view.dart';
 import 'package:helping_hands_app/screens/terms_conditions/terms_conditions_view.dart';
 import 'package:helping_hands_app/screens/transaction_details/transaction_details_view.dart';
@@ -53,6 +54,7 @@ class RoutesManager {
   static const String transactionDetailsRoute = '/transactionDetail';
   static const String successStoriesRoute = '/successStories';
   static const String projectDetailsRoute = '/projectDetails';
+  static const String postQuestionRoute = '/postQuestion';
 }
 
 class RoutesGenerator {
@@ -159,6 +161,10 @@ class RoutesGenerator {
       case RoutesManager.projectDetailsRoute:
         return MaterialPageRoute(
           builder: (_) => ProjectDetailsView(),
+        );
+      case RoutesManager.postQuestionRoute:
+        return MaterialPageRoute(
+          builder: (_) => PostQuestionView(),
         );
       default:
         return unDefined();

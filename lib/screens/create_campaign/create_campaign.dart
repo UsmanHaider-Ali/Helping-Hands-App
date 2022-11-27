@@ -52,18 +52,27 @@ class _CreateCampaignState extends State<CreateCampaign> {
               ),
               SizedBox(
                 height: 100,
-                child: ListView.builder(
-                  physics: ClampingScrollPhysics(),
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 10,
-                  itemBuilder: (BuildContext context, int index) => InkWell(
-                    child: SelectedImageView(),
-                    onTap: () {
-                      _onCategoryClick(index);
-                    },
+                child: Row(children: [
+                  Icon(
+                    Icons.add_photo_alternate,
+                    color: ColorsManager.lightTextColor,
+                    size: 64,
                   ),
-                ),
+                  Expanded(
+                    child: ListView.builder(
+                      physics: ClampingScrollPhysics(),
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 10,
+                      itemBuilder: (BuildContext context, int index) => InkWell(
+                        child: SelectedImageView(),
+                        onTap: () {
+                          // _onCategoryClick(index);
+                        },
+                      ),
+                    ),
+                  ),
+                ]),
               ),
               SizedBox(
                 height: 12,
