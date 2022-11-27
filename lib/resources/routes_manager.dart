@@ -1,4 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:helping_hands_app/screens/about_us/about_us_view.dart';
+import 'package:helping_hands_app/screens/favourite/favourite_view.dart';
+import 'package:helping_hands_app/screens/privacy_policy/privacy_policy_view.dart';
+import 'package:helping_hands_app/screens/profile/update_user_profile_view.dart';
+import 'package:helping_hands_app/screens/profile/user_profile_view.dart';
+import 'package:helping_hands_app/screens/projects/project_details_view.dart';
+import 'package:helping_hands_app/screens/success_stories/success_stories_view.dart';
+import 'package:helping_hands_app/screens/terms_conditions/terms_conditions_view.dart';
+import 'package:helping_hands_app/screens/transaction_details/transaction_details_view.dart';
+import 'package:helping_hands_app/screens/transactions_history/transactions_history_view.dart';
 
 import '../screens/campaign_detail/campaign_detail_view.dart';
 import '../screens/chat/chat_view.dart';
@@ -33,6 +43,16 @@ class RoutesManager {
   static const String discussionRoute = '/discussion';
   static const String discussionChatRoute = '/discussionChat';
   static const String chatDetailRoute = '/chatDetail';
+  static const String userProfileRoute = '/userProfile';
+  static const String updateUserProfileRoute = '/updateUserProfile';
+  static const String favouriteRoute = '/favourit';
+  static const String privacyPolicyRoute = '/privacyPolicy';
+  static const String termsConditionsRoute = '/termsConditions';
+  static const String aboutUsRoute = '/aboutUs';
+  static const String transactionsHistoryRoute = '/transactionsHistory';
+  static const String transactionDetailsRoute = '/transactionDetail';
+  static const String successStoriesRoute = '/successStories';
+  static const String projectDetailsRoute = '/projectDetails';
 }
 
 class RoutesGenerator {
@@ -99,6 +119,46 @@ class RoutesGenerator {
       case RoutesManager.chatDetailRoute:
         return MaterialPageRoute(
           builder: (_) => ChatDetailView(),
+        );
+      case RoutesManager.userProfileRoute:
+        return MaterialPageRoute(
+          builder: (_) => UserProfileView(),
+        );
+      case RoutesManager.updateUserProfileRoute:
+        return MaterialPageRoute(
+          builder: (_) => UpdateUserProfileView(),
+        );
+      case RoutesManager.favouriteRoute:
+        return MaterialPageRoute(
+          builder: (_) => FavouriteView(),
+        );
+      case RoutesManager.privacyPolicyRoute:
+        return MaterialPageRoute(
+          builder: (_) => PrivacyPolicyView(),
+        );
+      case RoutesManager.termsConditionsRoute:
+        return MaterialPageRoute(
+          builder: (_) => TermsConditionsView(),
+        );
+      case RoutesManager.aboutUsRoute:
+        return MaterialPageRoute(
+          builder: (_) => AboutUsView(),
+        );
+      case RoutesManager.transactionsHistoryRoute:
+        return MaterialPageRoute(
+          builder: (_) => TransactionsHistoryView(),
+        );
+      case RoutesManager.transactionDetailsRoute:
+        return MaterialPageRoute(
+          builder: (_) => TransactionDetailsView(),
+        );
+      case RoutesManager.successStoriesRoute:
+        return MaterialPageRoute(
+          builder: (_) => SuccessStoriesView(),
+        );
+      case RoutesManager.projectDetailsRoute:
+        return MaterialPageRoute(
+          builder: (_) => ProjectDetailsView(),
         );
       default:
         return unDefined();

@@ -2,12 +2,12 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:helping_hands_app/resources/colors_manager.dart';
 
+import '/resources/dimens_manager.dart';
 import '../../resources/assets_manager.dart';
+import '../../resources/colors_manager.dart';
 import '../../resources/routes_manager.dart';
 import '../../resources/strings_manager.dart';
-import '/resources/dimens_manager.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -107,30 +107,6 @@ class _RegisterViewState extends State<RegisterView> {
                   hintText: StringsManager.enterAddress,
                   label: Text(
                     StringsManager.address,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: MarginsManager.marginBetweenSectionsViews,
-              ),
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  hintText: StringsManager.enterPassword,
-                  label: Text(
-                    StringsManager.password,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: MarginsManager.marginBetweenSectionsViews,
-              ),
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  hintText: StringsManager.confirmEnterPassword,
-                  label: Text(
-                    StringsManager.confirmPassword,
                   ),
                 ),
               ),

@@ -1,19 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:helping_hands_app/resources/dimens_manager.dart';
 
 import '../../resources/assets_manager.dart';
 import '../../resources/colors_manager.dart';
+import '../../resources/dimens_manager.dart';
 import '../../resources/routes_manager.dart';
 import '../../resources/strings_manager.dart';
 
-class UserTypeView extends StatefulWidget {
-  const UserTypeView({super.key});
+class UpdateUserProfileView extends StatelessWidget {
+  const UpdateUserProfileView({Key? key}) : super(key: key);
 
-  @override
-  State<UserTypeView> createState() => _UserTypeViewState();
-}
-
-class _UserTypeViewState extends State<UserTypeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,32 +21,45 @@ class _UserTypeViewState extends State<UserTypeView> {
           ),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: MarginsManager.topMarginWithoutAppBar,
-              ),
-              const Image(
-                image: AssetImage(
-                  ImageAssetsManager.appLogo,
-                ),
-              ),
-              SizedBox(
-                height: MarginsManager.marginBetweenSections,
               ),
               Text(
                 textAlign: TextAlign.center,
-                StringsManager.loginScreenTitle,
+                StringsManager.registerScreenTitle,
                 style: Theme.of(context).textTheme.titleMedium,
               ),
               SizedBox(
                 height: MarginsManager.marginBetweenSectionsViews,
               ),
               Text(
-                StringsManager.loginScreenSubTitle,
+                StringsManager.registerScreenSubTitle,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               const SizedBox(
                 height: MarginsManager.marginBetweenSections,
+              ),
+              CircleAvatar(
+                backgroundImage: AssetImage(
+                  ImageAssetsManager.appLogo,
+                ),
+                backgroundColor: ColorsManager.screenColor,
+                radius: ValuesManager.imagePicker,
+              ),
+              const SizedBox(
+                height: MarginsManager.marginBetweenSectionsViews,
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: StringsManager.enterName,
+                  label: Text(
+                    StringsManager.name,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: MarginsManager.marginBetweenSectionsViews,
               ),
               TextField(
                 decoration: InputDecoration(
@@ -64,11 +73,21 @@ class _UserTypeViewState extends State<UserTypeView> {
                 height: MarginsManager.marginBetweenSectionsViews,
               ),
               TextField(
-                obscureText: true,
                 decoration: InputDecoration(
-                  hintText: StringsManager.enterPassword,
+                  hintText: StringsManager.enterEmail,
                   label: Text(
-                    StringsManager.password,
+                    StringsManager.email,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: MarginsManager.marginBetweenSectionsViews,
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: StringsManager.enterPhone,
+                  label: Text(
+                    StringsManager.phone,
                   ),
                 ),
               ),
@@ -78,9 +97,20 @@ class _UserTypeViewState extends State<UserTypeView> {
               TextField(
                 obscureText: true,
                 decoration: InputDecoration(
-                  hintText: StringsManager.confirmEnterPassword,
+                  hintText: StringsManager.selectDateOfBirth,
                   label: Text(
-                    StringsManager.confirmPassword,
+                    StringsManager.dateOfBirth,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: MarginsManager.marginBetweenSectionsViews,
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: StringsManager.enterAddress,
+                  label: Text(
+                    StringsManager.address,
                   ),
                 ),
               ),
@@ -91,11 +121,11 @@ class _UserTypeViewState extends State<UserTypeView> {
                 onPressed: () {
                   Navigator.pushReplacementNamed(
                     context,
-                    RoutesManager.otpRoute,
+                    RoutesManager.userProfileRoute,
                   );
                 },
                 child: Text(
-                  StringsManager.registerNow,
+                  "Update Profile",
                 ),
               ),
             ],

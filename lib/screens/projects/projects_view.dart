@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:helping_hands_app/screens/chat/chat_view.dart';
-import 'package:helping_hands_app/screens/discussion/discussion_view.dart';
-import 'package:helping_hands_app/widgets/category_title_style.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:helping_hands_app/screens/projects/as_donor_view.dart';
+import 'package:helping_hands_app/screens/projects/as_receiver.dart';
 
 import '../../resources/colors_manager.dart';
+import '../../widgets/category_title_style.dart';
 
-class Conservations extends StatefulWidget {
-  const Conservations({super.key});
+class ProjectsView extends StatefulWidget {
+  const ProjectsView({super.key});
 
   @override
-  State<Conservations> createState() => _ConservationsState();
+  State<ProjectsView> createState() => _ProjectsViewState();
 }
 
-class _ConservationsState extends State<Conservations> {
+class _ProjectsViewState extends State<ProjectsView> {
   int _selectedIndex = 0;
 
   void _onCategoryClick(int index) {
@@ -21,10 +22,10 @@ class _ConservationsState extends State<Conservations> {
     });
   }
 
-  final List<String> menuList = ["Chat", "Blog"];
+  final List<String> menuList = ["As Donor", "As Receiver"];
   final List<Widget> menuScreen = [
-    ChatView(),
-    DiscussionView(),
+    AsDonorView(),
+    AsReceiverView(),
   ];
 
   @override
@@ -72,9 +73,7 @@ class _ConservationsState extends State<Conservations> {
               ),
             ),
             Expanded(
-              child: Container(
-                child: menuScreen[_selectedIndex],
-              ),
+              child: menuScreen[_selectedIndex],
             ),
           ],
         ),

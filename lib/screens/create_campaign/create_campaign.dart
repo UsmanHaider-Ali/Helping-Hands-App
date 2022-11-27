@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:helping_hands_app/resources/colors_manager.dart';
 
-import '../../resources/dimens_manager.dart';
 import '../../resources/strings_manager.dart';
 import '../../widgets/selected_image_style.dart';
 
@@ -15,6 +14,7 @@ class CreateCampaign extends StatefulWidget {
 
 class _CreateCampaignState extends State<CreateCampaign> {
   int _selectedIndex = 0;
+  bool isChecked = false;
 
   void _onCategoryClick(int index) {
     setState(() {
@@ -82,6 +82,7 @@ class _CreateCampaignState extends State<CreateCampaign> {
               ),
               TextField(
                 keyboardType: TextInputType.multiline,
+                maxLines: 5,
                 decoration: InputDecoration(
                   hintText: "Enter Description",
                   label: Text(
@@ -135,6 +136,7 @@ class _CreateCampaignState extends State<CreateCampaign> {
                 height: 12,
               ),
               TextField(
+                maxLines: 5,
                 keyboardType: TextInputType.multiline,
                 decoration: InputDecoration(
                   hintText: "Enter Story",
@@ -147,6 +149,7 @@ class _CreateCampaignState extends State<CreateCampaign> {
                 height: 12,
               ),
               TextField(
+                maxLines: 5,
                 keyboardType: TextInputType.multiline,
                 decoration: InputDecoration(
                   hintText: "Enter Action Plan",
@@ -160,6 +163,7 @@ class _CreateCampaignState extends State<CreateCampaign> {
               ),
               TextField(
                 keyboardType: TextInputType.multiline,
+                maxLines: 5,
                 decoration: InputDecoration(
                   hintText: "Enter Risk and Challenges",
                   label: Text(
@@ -167,8 +171,23 @@ class _CreateCampaignState extends State<CreateCampaign> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: MarginsManager.marginBetweenSectionsViews,
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Checkbox(
+                    value: isChecked,
+                    activeColor: ColorsManager.primaryColor,
+                    onChanged: (value) {
+                      setState(() {
+                        isChecked = value!;
+                      });
+                    },
+                  ),
+                  Text(
+                    "Is Long Term Project?",
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                ],
               ),
               ElevatedButton(
                 onPressed: () {

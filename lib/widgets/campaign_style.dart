@@ -12,12 +12,11 @@ class CampaignStyle extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double widthOfBoxBar = width * 0.6;
-    double widthOfCompletedBar = width * 0.5;
-
+    double widthOfCompletedBar = width * 0.3;
     return Card(
       color: ColorsManager.appBarColor,
       child: Padding(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(12),
         child: Row(
           children: [
             Container(
@@ -49,11 +48,11 @@ class CampaignStyle extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Raised 5 ETH",
+                        "Raised 1.5 ETH",
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                       Text(
-                        "Goal 2.5 ETH",
+                        "Goal 3.0 ETH",
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                     ],
@@ -85,7 +84,7 @@ class CampaignStyle extends StatelessWidget {
                             width: widthOfCompletedBar,
                           ),
                           const Text(
-                            "12%",
+                            "50%",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 10,
