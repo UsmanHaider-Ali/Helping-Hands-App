@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:helping_hands_app/dummy_data.dart';
+import 'package:helping_hands_app/resources/colors_manager.dart';
 import 'package:helping_hands_app/resources/routes_manager.dart';
+import 'package:helping_hands_app/widgets/campaign_style.dart';
+import 'package:helping_hands_app/widgets/category_title_style.dart';
 
-import '../../resources/colors_manager.dart';
-import '../../widgets/campaign_style.dart';
-import '../../widgets/category_title_style.dart';
-
-class MyCampaigns extends StatefulWidget {
-  const MyCampaigns({super.key});
+class AllCampaignsView extends StatefulWidget {
+  const AllCampaignsView({super.key});
 
   @override
-  State<MyCampaigns> createState() => _MyCampaignsState();
+  State<AllCampaignsView> createState() => _AllCampaignsViewState();
 }
 
-class _MyCampaignsState extends State<MyCampaigns> {
+class _AllCampaignsViewState extends State<AllCampaignsView> {
   int _selectedIndex = 0;
 
   void _onCategoryClick(int index) {
@@ -22,11 +21,14 @@ class _MyCampaignsState extends State<MyCampaigns> {
     });
   }
 
+  final List<CampaignModel> campaignsList = getCampaignsList();
+  final List categoryList = getCategoriesList();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -43,23 +45,24 @@ class _MyCampaignsState extends State<MyCampaigns> {
               height: 8,
             ),
             SizedBox(
-              height: 36.0,
+              height: 40.0,
               child: ListView.builder(
                 physics: ClampingScrollPhysics(),
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                itemCount: 10,
+                itemCount: categoryList.length,
                 itemBuilder: (BuildContext context, int index) => InkWell(
                   child: CategoryStyle(
                     textStyle: _selectedIndex == index
                         ? TextStyle(
                             color: ColorsManager.primaryColor,
+                            fontWeight: FontWeight.w500,
                             decoration: TextDecoration.underline,
                           )
                         : TextStyle(
                             color: ColorsManager.lightTextColor,
                           ),
-                    title: 'Category $index',
+                    title: categoryList[index],
                   ),
                   onTap: () {
                     _onCategoryClick(index);
@@ -71,9 +74,16 @@ class _MyCampaignsState extends State<MyCampaigns> {
               child: ListView.builder(
                 physics: ClampingScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: 10,
+                itemCount: campaignsList.length,
                 itemBuilder: (BuildContext context, int index) => InkWell(
-                  child: CampaignStyle(),
+                  child: CampaignStyle(
+                    image: campaignsList[index].image,
+                    name: campaignsList[index].name,
+                    campaignBy: campaignsList[index].campaignBy,
+                    raisedAmount: campaignsList[index].raisedAmount,
+                    targetAmount: campaignsList[index].targetAmount,
+                    timeLeft: campaignsList[index].timeLeft,
+                  ),
                   onTap: () {
                     Navigator.pushNamed(
                         context, RoutesManager.campaignDetailRoute);
@@ -83,15 +93,6 @@ class _MyCampaignsState extends State<MyCampaigns> {
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: ColorsManager.primaryColor,
-        child: Icon(
-          Icons.add,
-        ),
-        onPressed: () {
-          Navigator.pushNamed(context, RoutesManager.startCampaignRoute);
-        },
       ),
     );
   }

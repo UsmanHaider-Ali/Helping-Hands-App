@@ -1,25 +1,31 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:helping_hands_app/resources/assets_manager.dart';
 import 'package:helping_hands_app/resources/colors_manager.dart';
 
 class ChatStyle extends StatelessWidget {
-  final String userName, lastMessage, time;
+  final String userName, lastMessage, time, image;
   final int unReadMessage;
+  final Color color;
 
-  const ChatStyle({
-    Key? key,
-    required this.userName,
-    required this.lastMessage,
-    required this.time,
-    required this.unReadMessage,
-  }) : super(key: key);
+  const ChatStyle(
+      {Key? key,
+      required this.userName,
+      required this.lastMessage,
+      required this.time,
+      required this.unReadMessage,
+      required this.image,
+      required this.color})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -29,8 +35,8 @@ class ChatStyle extends StatelessWidget {
                   CircleAvatar(
                     radius: 32,
                     backgroundColor: Colors.transparent,
-                    child: Image.asset(
-                      ImageAssetsManager.appLogo,
+                    backgroundImage: NetworkImage(
+                      image,
                     ),
                   ),
                   const SizedBox(
@@ -44,6 +50,7 @@ class ChatStyle extends StatelessWidget {
                         Text(
                           userName,
                           style: Theme.of(context).textTheme.titleMedium,
+                          maxLines: 1,
                         ),
                         const SizedBox(
                           height: 2,
@@ -51,6 +58,7 @@ class ChatStyle extends StatelessWidget {
                         Text(
                           lastMessage,
                           style: Theme.of(context).textTheme.bodySmall,
+                          maxLines: 2,
                         ),
                       ],
                     ),
@@ -66,7 +74,7 @@ class ChatStyle extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 10,
-                  backgroundColor: ColorsManager.primaryColor,
+                  backgroundColor: color,
                   child: Text(
                     unReadMessage.toString(),
                     style: TextStyle(

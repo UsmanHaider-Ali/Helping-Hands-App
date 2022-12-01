@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:helping_hands_app/resources/routes_manager.dart';
 import 'package:helping_hands_app/widgets/question_style.dart';
 
+import '../../dummy_data.dart';
 import '../../resources/colors_manager.dart';
 
 class DiscussionView extends StatefulWidget {
-  const DiscussionView({super.key});
+  DiscussionView({super.key});
 
   @override
   State<DiscussionView> createState() => _DiscussionViewState();
@@ -16,7 +17,7 @@ class _DiscussionViewState extends State<DiscussionView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-        itemCount: 10,
+        itemCount: questions.length,
         itemBuilder: (
           buildcontext,
           index,
@@ -26,10 +27,9 @@ class _DiscussionViewState extends State<DiscussionView> {
               Navigator.pushNamed(context, RoutesManager.discussionChatRoute);
             },
             child: QuestionStyle(
-              question: "Question $index",
-              lastAnswer:
-                  "Forward interpolation but ab center b included ha so central b a skta ha or umm newton raphson nd regula.",
-              time: "$index:$index$index AM",
+              question: questions[index]['question'].toString(),
+              lastAnswer: questions[index]['answer'].toString(),
+              time: questions[index]['time'].toString(),
             ),
           );
         },

@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:helping_hands_app/screens/about_us/about_us_view.dart';
+import 'package:helping_hands_app/screens/campaign_details/campaign_details_view.dart';
+import 'package:helping_hands_app/screens/discussion/post_question_view.dart';
 import 'package:helping_hands_app/screens/favourite/favourite_view.dart';
 import 'package:helping_hands_app/screens/privacy_policy/privacy_policy_view.dart';
 import 'package:helping_hands_app/screens/profile/update_user_profile_view.dart';
 import 'package:helping_hands_app/screens/profile/user_profile_view.dart';
 import 'package:helping_hands_app/screens/projects/project_details_view.dart';
-import 'package:helping_hands_app/screens/question/post_question_view.dart';
 import 'package:helping_hands_app/screens/success_stories/success_stories_view.dart';
 import 'package:helping_hands_app/screens/terms_conditions/terms_conditions_view.dart';
-import 'package:helping_hands_app/screens/transaction_details/transaction_details_view.dart';
-import 'package:helping_hands_app/screens/transactions_history/transactions_history_view.dart';
+import 'package:helping_hands_app/screens/transaction/transaction_details_view.dart';
+import 'package:helping_hands_app/screens/transaction/transactions_history_view.dart';
 
-import '../screens/campaign_detail/campaign_detail_view.dart';
+import '../screens/authentication/forgot_password_view.dart';
+import '../screens/authentication/login_view.dart';
+import '../screens/authentication/otp_view.dart';
+import '../screens/authentication/registration_first_view.dart';
+import '../screens/authentication/registration_second_view.dart';
+import '../screens/campaign/create_campaign.dart';
+import '../screens/chat/chat_details_view.dart';
 import '../screens/chat/chat_view.dart';
-import '../screens/chat_detail/chat_detail_view.dart';
-import '../screens/create_campaign/create_campaign.dart';
 import '../screens/discussion/discussion_view.dart';
-import '../screens/discussion_form_chat/discussion_form_chat.dart';
-import '../screens/forgot_password/forgot_password_view.dart';
-import '../screens/login/login_view.dart';
+import '../screens/discussion/question_details_view.dart';
 import '../screens/main/main_view.dart';
 import '../screens/onboarding/onboarding_view.dart';
-import '../screens/opt/otp_view.dart';
-import '../screens/register/register_view.dart';
+import '../screens/profile/update_password_view.dart';
 import '../screens/splash/splash_view.dart';
-import '../screens/update_password/update_password_view.dart';
-import '../screens/user_type/user_type_view.dart';
 import 'strings_manager.dart';
 
 class RoutesManager {
@@ -76,11 +76,11 @@ class RoutesGenerator {
         );
       case RoutesManager.registerRoute:
         return MaterialPageRoute(
-          builder: (_) => RegisterView(),
+          builder: (_) => RegistrationFirstView(),
         );
       case RoutesManager.userTypeRoute:
         return MaterialPageRoute(
-          builder: (_) => UserTypeView(),
+          builder: (_) => RegistrationSecondView(),
         );
       case RoutesManager.otpRoute:
         return MaterialPageRoute(
@@ -104,7 +104,7 @@ class RoutesGenerator {
         );
       case RoutesManager.campaignDetailRoute:
         return MaterialPageRoute(
-          builder: (_) => CampaignDetailView(),
+          builder: (_) => CampaignDetailsView(),
         );
       case RoutesManager.chatRoute:
         return MaterialPageRoute(
@@ -116,11 +116,11 @@ class RoutesGenerator {
         );
       case RoutesManager.discussionChatRoute:
         return MaterialPageRoute(
-          builder: (_) => DiscussionFormChat(),
+          builder: (_) => QuestionDetailsView(),
         );
       case RoutesManager.chatDetailRoute:
         return MaterialPageRoute(
-          builder: (_) => ChatDetailView(),
+          builder: (_) => ChatDetailsView(),
         );
       case RoutesManager.userProfileRoute:
         return MaterialPageRoute(

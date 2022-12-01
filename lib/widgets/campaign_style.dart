@@ -1,28 +1,63 @@
 import 'package:flutter/material.dart';
 
-import '../resources/assets_manager.dart';
 import '../resources/colors_manager.dart';
 import '../resources/dimens_manager.dart';
 import '../resources/strings_manager.dart';
 
 class CampaignStyle extends StatelessWidget {
-  const CampaignStyle({super.key});
+  String image;
+  String name;
+  String campaignBy;
+  double targetAmount;
+  double raisedAmount;
+  String timeLeft;
+
+  CampaignStyle({
+    super.key,
+    required this.image,
+    required this.name,
+    required this.campaignBy,
+    required this.targetAmount,
+    required this.raisedAmount,
+    required this.timeLeft,
+  });
+
+  String findCompletedPercentage() {
+    final double cp = raisedAmount / targetAmount * 100;
+    return double.parse((cp).toStringAsFixed(2)).toString() + "%";
+  }
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
+    double width = MediaQuery.of(context).size.width - 16;
+
     double widthOfBoxBar = width * 0.6;
-    double widthOfCompletedBar = width * 0.3;
+
+    double widthOfCompletedBar = width *
+        double.parse((raisedAmount / targetAmount * 100).toStringAsFixed(2)) /
+        200;
+
     return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
       color: ColorsManager.appBarColor,
       child: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(8),
         child: Row(
           children: [
             Container(
-              child: Image.asset(
-                ImageAssetsManager.appLogo,
-                width: width * 0.25,
+              width: width * 0.25,
+              height: width * 0.25,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image.network(
+                  image,
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: double.infinity,
+                ),
               ),
             ),
             SizedBox(
@@ -34,12 +69,14 @@ class CampaignStyle extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Funds for Flood",
+                    name,
                     style: Theme.of(context).textTheme.titleMedium,
+                    maxLines: 1,
                   ),
                   Text(
-                    "Campaign by Ali Haider",
+                    "Campaign by $campaignBy",
                     style: Theme.of(context).textTheme.bodySmall,
+                    maxLines: 1,
                   ),
                   SizedBox(
                     height: 8,
@@ -48,11 +85,11 @@ class CampaignStyle extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Raised 1.5 ETH",
+                        "Raised $raisedAmount ETH",
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                       Text(
-                        "Goal 3.0 ETH",
+                        "Goal $targetAmount ETH",
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                     ],
@@ -83,8 +120,8 @@ class CampaignStyle extends StatelessWidget {
                             height: 12,
                             width: widthOfCompletedBar,
                           ),
-                          const Text(
-                            "50%",
+                          Text(
+                            findCompletedPercentage(),
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 10,
@@ -164,7 +201,7 @@ class CampaignStyle extends StatelessWidget {
                                         ElevatedButton(
                                           onPressed: () {
                                             Navigator.of(context,
-                                                    rootNavigator: true)
+                                                rootNavigator: true)
                                                 .pop();
                                           },
                                           child: const Text(
@@ -178,7 +215,7 @@ class CampaignStyle extends StatelessWidget {
                                         InkWell(
                                           onTap: () {
                                             Navigator.of(context,
-                                                    rootNavigator: true)
+                                                rootNavigator: true)
                                                 .pop();
                                           },
                                           child: Text(

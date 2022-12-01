@@ -1,4 +1,4 @@
-import 'package:helping_hands_app/screens/forgot_password/forgot_password_view.dart';
+import 'package:helping_hands_app/screens/authentication/forgot_password_view.dart';
 
 class StringsManager {
   static const String noRouteFound = 'No Route Found';

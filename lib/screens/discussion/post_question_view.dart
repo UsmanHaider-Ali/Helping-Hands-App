@@ -16,9 +16,10 @@ class PostQuestionView extends StatelessWidget {
           "Add Question",
           style: Theme.of(context).textTheme.titleMedium,
         ),
+        iconTheme: IconThemeData(color: ColorsManager.primaryTextColor),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

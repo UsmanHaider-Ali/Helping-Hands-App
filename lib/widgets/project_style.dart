@@ -1,19 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:helping_hands_app/dummy_data.dart';
 
 import '../resources/colors_manager.dart';
 import '../resources/dimens_manager.dart';
 
 class ProjectStyle extends StatelessWidget {
-  const ProjectStyle({Key? key}) : super(key: key);
+  ProjectModel projectModel;
+
+  ProjectStyle({Key? key, required this.projectModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
+    double width = MediaQuery.of(context).size.width - 12;
     double widthOfBoxBar = width * 0.85;
-    double widthOfCompletedBar = width * 0.5;
+    double widthOfCompletedBar = width * projectModel.percentage / 150;
 
     return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
       color: ColorsManager.appBarColor,
       child: Padding(
         padding: const EdgeInsets.all(12),
@@ -25,11 +32,13 @@ class ProjectStyle extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Mobile App",
+                    projectModel.name,
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   Text(
-                    "Funding by Ali Haider",
+                    projectModel.isGivingFunds
+                        ? "Funding by ${projectModel.projectBy}"
+                        : "Funding to ${projectModel.projectBy}",
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   SizedBox(
@@ -46,7 +55,7 @@ class ProjectStyle extends StatelessWidget {
                         width: 16,
                       ),
                       Text(
-                        "Design Mobile App",
+                        projectModel.currentModule,
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                     ],
@@ -62,7 +71,7 @@ class ProjectStyle extends StatelessWidget {
                         width: 16,
                       ),
                       Text(
-                        "31 December, 2022",
+                        projectModel.completionDate,
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                     ],
@@ -96,8 +105,8 @@ class ProjectStyle extends StatelessWidget {
                             height: 16,
                             width: widthOfCompletedBar,
                           ),
-                          const Text(
-                            "70%",
+                          Text(
+                            projectModel.percentage.toString(),
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 10,

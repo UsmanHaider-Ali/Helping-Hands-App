@@ -25,7 +25,7 @@ class SenderMessageStyle extends StatelessWidget {
           color: ColorsManager.primaryColor,
           elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(12),
           ),
           // color: messageColor,
           margin: const EdgeInsets.symmetric(

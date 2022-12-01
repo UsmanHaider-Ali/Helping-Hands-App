@@ -2,12 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:helping_hands_app/widgets/campaign_style.dart';
 import 'package:helping_hands_app/widgets/receiver_message_style.dart';
+import 'package:helping_hands_app/widgets/sender_message_style.dart';
 
+import '../../dummy_data.dart';
 import '../../resources/colors_manager.dart';
 
-class ChatDetailView extends StatelessWidget {
-  const ChatDetailView({Key? key}) : super(key: key);
+class ChatDetailsView extends StatefulWidget {
+  ChatDetailsView({Key? key}) : super(key: key);
 
+  @override
+  State<ChatDetailsView> createState() => _ChatDetailsViewState();
+}
+
+class _ChatDetailsViewState extends State<ChatDetailsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,23 +28,37 @@ class ChatDetailView extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            CampaignStyle(),
+            CampaignStyle(
+              image:
+                  "https://blog.fundly.com/wp-content/uploads/2017/08/angies-battle-main-crowdfunding-page-example-1-1.png",
+              name: "Crowdfunding Campaigns for Medical Expenses",
+              campaignBy: "Angie’s Battle",
+              targetAmount: 100.0,
+              raisedAmount: 50.0,
+              timeLeft: "07 Days",
+            ),
             Expanded(
               child: ListView.builder(
-                itemCount: 100,
+                itemCount: messages.length,
                 itemBuilder: (
                   buildcontext,
                   index,
                 ) =>
-                    ReceiverMessageStyle(
-                  message:
-                      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.",
-                  timeStamp: "12:22 AM",
-                  isMessageSeen: true,
-                ),
+                    messages[index]['isMe'].toString() == "false"
+                        ? ReceiverMessageStyle(
+                            message: messages[index]['text'].toString(),
+                            timeStamp: messages[index]['time'].toString(),
+                            isMessageSeen: true,
+                            by: "_",
+                          )
+                        : SenderMessageStyle(
+                            message: messages[index]['text'].toString(),
+                            timeStamp: messages[index]['time'].toString(),
+                            isMessageSeen: true,
+                          ),
               ),
             ),
             Expanded(

@@ -14,18 +14,24 @@ class QuestionStyle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: Padding(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(8),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 question,
                 style: Theme.of(context).textTheme.titleMedium,
+                maxLines: 2,
               ),
               Text(
                 lastAnswer,
                 style: Theme.of(context).textTheme.bodySmall,
+                maxLines: 4,
               ),
               SizedBox(
                 height: 4,

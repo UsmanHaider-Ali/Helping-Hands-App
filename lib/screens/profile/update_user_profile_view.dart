@@ -13,6 +13,15 @@ class UpdateUserProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Update Profile",
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        iconTheme: IconThemeData(
+          color: ColorsManager.primaryTextColor,
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -22,7 +31,7 @@ class UpdateUserProfileView extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(
-                height: MarginsManager.topMarginWithoutAppBar,
+                height: 0,
               ),
               Text(
                 textAlign: TextAlign.center,

@@ -6,14 +6,14 @@ import '../../resources/colors_manager.dart';
 import '../../resources/routes_manager.dart';
 import '../../resources/strings_manager.dart';
 
-class UserTypeView extends StatefulWidget {
-  const UserTypeView({super.key});
+class RegistrationSecondView extends StatefulWidget {
+  const RegistrationSecondView({super.key});
 
   @override
-  State<UserTypeView> createState() => _UserTypeViewState();
+  State<RegistrationSecondView> createState() => _RegistrationSecondViewState();
 }
 
-class _UserTypeViewState extends State<UserTypeView> {
+class _RegistrationSecondViewState extends State<RegistrationSecondView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

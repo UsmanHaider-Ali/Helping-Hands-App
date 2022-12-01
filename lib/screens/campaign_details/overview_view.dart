@@ -5,14 +5,14 @@ import '../../resources/assets_manager.dart';
 import '../../resources/colors_manager.dart';
 import '../../resources/dimens_manager.dart';
 
-class OverView extends StatefulWidget {
-  const OverView({Key? key}) : super(key: key);
+class OverviewView extends StatefulWidget {
+  const OverviewView({Key? key}) : super(key: key);
 
   @override
-  State<OverView> createState() => _OverViewState();
+  State<OverviewView> createState() => _OverviewViewState();
 }
 
-class _OverViewState extends State<OverView> {
+class _OverviewViewState extends State<OverviewView> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -56,6 +56,24 @@ class _OverViewState extends State<OverView> {
         SizedBox(
           height: 8,
         ),
+        Row(
+          children: [
+            Text(
+              "Note: ",
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+            SizedBox(
+              width: 8,
+            ),
+            Text(
+              "It can be a Long Term Project.",
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 8,
+        ),
         Container(
           width: width,
           child: Column(
@@ -65,11 +83,11 @@ class _OverViewState extends State<OverView> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Raised 1.5 ETH",
+                    "Raised 100.0 ETH",
                     style: Theme.of(context).textTheme.titleSmall,
                   ),
                   Text(
-                    "Goal 3.0 ETH",
+                    "Goal 200.0 ETH",
                     style: Theme.of(context).textTheme.titleSmall,
                   ),
                 ],

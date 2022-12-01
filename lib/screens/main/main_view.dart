@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:helping_hands_app/resources/colors_manager.dart';
 import 'package:helping_hands_app/resources/routes_manager.dart';
+import 'package:helping_hands_app/screens/campaign/all_campaigns_view.dart';
+import 'package:helping_hands_app/screens/campaign/my_campaigns.dart';
 import 'package:helping_hands_app/screens/conservations/conservations.dart';
-import 'package:helping_hands_app/screens/home/home_view.dart';
-import 'package:helping_hands_app/screens/my_campaigns/my_campaigns.dart';
 import 'package:helping_hands_app/screens/projects/projects_view.dart';
 
 import '../../resources/assets_manager.dart';
@@ -20,7 +20,7 @@ class _MainViewState extends State<MainView> {
   int _selectedIndex = 0;
 
   List<Widget> _menuScreens = <Widget>[
-    HomeView(),
+    AllCampaignsView(),
     MyCampaigns(),
     ProjectsView(),
     Conservations(),

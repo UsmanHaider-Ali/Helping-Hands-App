@@ -1,19 +1,22 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '/resources/dimens_manager.dart';
 import '../../resources/assets_manager.dart';
-import '../../resources/dimens_manager.dart';
+import '../../resources/colors_manager.dart';
 import '../../resources/routes_manager.dart';
 import '../../resources/strings_manager.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class RegistrationFirstView extends StatefulWidget {
+  const RegistrationFirstView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<RegistrationFirstView> createState() => _RegistrationFirstViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _RegistrationFirstViewState extends State<RegistrationFirstView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,34 +27,46 @@ class _LoginViewState extends State<LoginView> {
             vertical: PaddingsManager.screenVerticalPadding,
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               const SizedBox(
                 height: MarginsManager.topMarginWithoutAppBar,
               ),
-              const Image(
-                image: AssetImage(
-                  ImageAssetsManager.appLogo,
-                ),
-              ),
-              SizedBox(
-                height: MarginsManager.marginBetweenSections,
-              ),
               Text(
                 textAlign: TextAlign.center,
-                StringsManager.loginScreenTitle,
+                StringsManager.registerScreenTitle,
                 style: Theme.of(context).textTheme.titleMedium,
               ),
               SizedBox(
                 height: MarginsManager.marginBetweenSectionsViews,
               ),
               Text(
-                StringsManager.loginScreenSubTitle,
+                StringsManager.registerScreenSubTitle,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               const SizedBox(
                 height: MarginsManager.marginBetweenSections,
+              ),
+              CircleAvatar(
+                backgroundImage: AssetImage(
+                  ImageAssetsManager.appLogo,
+                ),
+                backgroundColor: ColorsManager.screenColor,
+                radius: ValuesManager.imagePicker,
+              ),
+              const SizedBox(
+                height: MarginsManager.marginBetweenSectionsViews,
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: StringsManager.enterName,
+                  label: Text(
+                    StringsManager.name,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: MarginsManager.marginBetweenSectionsViews,
               ),
               TextField(
                 decoration: InputDecoration(
@@ -65,33 +80,35 @@ class _LoginViewState extends State<LoginView> {
                 height: MarginsManager.marginBetweenSectionsViews,
               ),
               TextField(
-                obscureText: true,
                 decoration: InputDecoration(
-                  hintText: StringsManager.enterPassword,
+                  hintText: StringsManager.enterPhone,
                   label: Text(
-                    StringsManager.password,
+                    StringsManager.phone,
                   ),
                 ),
               ),
               const SizedBox(
                 height: MarginsManager.marginBetweenSectionsViews,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  GestureDetector(
-                    child: Text(
-                      StringsManager.ForgotPassword,
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                    onTap: (() => {
-                          Navigator.pushReplacementNamed(
-                            context,
-                            RoutesManager.forgotPasswordRoute,
-                          )
-                        }),
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: StringsManager.selectDateOfBirth,
+                  label: Text(
+                    StringsManager.dateOfBirth,
                   ),
-                ],
+                ),
+              ),
+              const SizedBox(
+                height: MarginsManager.marginBetweenSectionsViews,
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: StringsManager.enterAddress,
+                  label: Text(
+                    StringsManager.address,
+                  ),
+                ),
               ),
               const SizedBox(
                 height: MarginsManager.marginBetweenSectionsViews,
@@ -100,11 +117,11 @@ class _LoginViewState extends State<LoginView> {
                 onPressed: () {
                   Navigator.pushReplacementNamed(
                     context,
-                    RoutesManager.mainRoute,
+                    RoutesManager.userTypeRoute,
                   );
                 },
-                child: const Text(
-                  StringsManager.login,
+                child: Text(
+                  StringsManager.next,
                 ),
               ),
               const SizedBox(
@@ -139,21 +156,21 @@ class _LoginViewState extends State<LoginView> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    StringsManager.dontHaveAccount,
-                    style: Theme.of(context).textTheme.bodySmall,
+                    StringsManager.alreadyHaveAccount,
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   SizedBox(
                     width: MarginsManager.marginBetweenSectionsViews,
                   ),
                   GestureDetector(
                     child: Text(
-                      StringsManager.registerNow,
+                      StringsManager.loginNow,
                       style: Theme.of(context).textTheme.labelMedium,
                     ),
                     onTap: () => {
                       Navigator.pushReplacementNamed(
                         context,
-                        RoutesManager.registerRoute,
+                        RoutesManager.loginRoute,
                       ),
                     },
                   )

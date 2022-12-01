@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:helping_hands_app/resources/colors_manager.dart';
 import 'package:helping_hands_app/widgets/sender_message_style.dart';
 
-class DiscussionFormChat extends StatelessWidget {
-  const DiscussionFormChat({Key? key}) : super(key: key);
+import '../../dummy_data.dart';
+import '../../widgets/receiver_message_style.dart';
+
+class QuestionDetailsView extends StatelessWidget {
+  const QuestionDetailsView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class DiscussionFormChat extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -62,17 +65,23 @@ class DiscussionFormChat extends StatelessWidget {
             Expanded(
               flex: 1,
               child: ListView.builder(
-                itemCount: 100,
+                itemCount: messages.length,
                 itemBuilder: (
                   buildcontext,
                   index,
                 ) =>
-                    SenderMessageStyle(
-                  message:
-                      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.",
-                  timeStamp: "12:23 AM",
-                  isMessageSeen: false,
-                ),
+                    messages[index]['isMe'].toString() == "false"
+                        ? ReceiverMessageStyle(
+                            message: messages[index]['text'].toString(),
+                            timeStamp: messages[index]['time'].toString(),
+                            isMessageSeen: true,
+                            by: messages[index]['by'].toString(),
+                          )
+                        : SenderMessageStyle(
+                            message: messages[index]['text'].toString(),
+                            timeStamp: messages[index]['time'].toString(),
+                            isMessageSeen: true,
+                          ),
               ),
             ),
             Expanded(

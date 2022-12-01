@@ -15,7 +15,7 @@ class AboutUsView extends StatelessWidget {
         iconTheme: IconThemeData(color: ColorsManager.primaryTextColor),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
