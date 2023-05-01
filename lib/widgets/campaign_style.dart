@@ -201,7 +201,7 @@ class CampaignStyle extends StatelessWidget {
                                         ElevatedButton(
                                           onPressed: () {
                                             Navigator.of(context,
-                                                rootNavigator: true)
+                                                    rootNavigator: true)
                                                 .pop();
                                           },
                                           child: const Text(
@@ -215,7 +215,7 @@ class CampaignStyle extends StatelessWidget {
                                         InkWell(
                                           onTap: () {
                                             Navigator.of(context,
-                                                rootNavigator: true)
+                                                    rootNavigator: true)
                                                 .pop();
                                           },
                                           child: Text(
