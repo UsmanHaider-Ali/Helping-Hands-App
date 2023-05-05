@@ -2,7 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:helping_hands_app/network/ApiResponse.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../resources/assets_manager.dart';
 import '../../resources/dimens_manager.dart';
@@ -21,25 +24,69 @@ class _LoginViewState extends State<LoginView> {
   final emailContoller = TextEditingController();
   final passwordContoller = TextEditingController();
 
-  // void login(String email, password) async {
-  //   try {
-  //     Response response = await post(
-  //         Uri.parse('http://10.0.2.2:3000/users/login-user'),
-  //         body: {'email': email, 'password': password});
+  void login(String email, password) async {
+    try {
+      Response response = await post(Uri.parse(APIs.loginUser),
+          body: {'email': email, 'password': password});
 
-  //     if (response.statusCode == 200) {
-  //       var data = jsonDecode(response.body.toString());
-  //       print(data['message']);
-  //       if (data['message'] == 'User login successfully.') {
-  //         Navigator.pushNamed(context, RoutesManager.mainRoute);
-  //       }
-  //     } else {
-  //       print('failed');
-  //     }
-  //   } catch (e) {
-  //     print(e.toString());
-  //   }
-  // }
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body.toString());
+
+        if (data['message'] == 'User login successfully.') {
+          Map<String, dynamic> user = data['data'];
+          String id = user['id'];
+          String walletKey = user['wallet_key'];
+          String image = user['image'];
+          String name = user['name'];
+          String email = user['email'];
+          bool isEmailVerified = user['isEmailVerified'];
+          String phone = user['phone'];
+          bool isPhoneVerified = user['isPhoneVerified'];
+          String address = user['address'];
+          String addressDetails = user['addressDetails'];
+          String latitude = user['latitude'];
+          String longitude = user['longitude'];
+          String dateOfBirth = user['date_of_birth'];
+          String userType = user['user_type'];
+          String token = user['token'];
+
+          SharedPreferences userDetail = await SharedPreferences.getInstance();
+          userDetail.setString('id', id);
+          userDetail.setString('type', userType);
+          userDetail.setBool('isUserLoggedIn', true);
+
+          Navigator.pushNamed(context, RoutesManager.mainRoute);
+        } else {
+          Fluttertoast.showToast(
+              msg: data['message'],
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 1,
+              backgroundColor: Colors.grey,
+              textColor: Colors.white,
+              fontSize: 16.0);
+        }
+      } else {
+        Fluttertoast.showToast(
+            msg: "Something wrong, please try again",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.grey,
+            textColor: Colors.white,
+            fontSize: 16.0);
+      }
+    } catch (e) {
+      Fluttertoast.showToast(
+          msg: e.toString(),
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.grey,
+          textColor: Colors.white,
+          fontSize: 16.0);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +108,7 @@ class _LoginViewState extends State<LoginView> {
                   ImageAssetsManager.appLogo,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: MarginsManager.marginBetweenSections,
               ),
               Text(
@@ -69,7 +116,7 @@ class _LoginViewState extends State<LoginView> {
                 StringsManager.loginScreenTitle,
                 style: Theme.of(context).textTheme.titleMedium,
               ),
-              SizedBox(
+              const SizedBox(
                 height: MarginsManager.marginBetweenSectionsViews,
               ),
               Text(
@@ -82,7 +129,7 @@ class _LoginViewState extends State<LoginView> {
               ),
               TextField(
                 controller: emailContoller,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: StringsManager.enterEmail,
                   label: Text(
                     StringsManager.email,
@@ -95,7 +142,7 @@ class _LoginViewState extends State<LoginView> {
               TextField(
                 controller: passwordContoller,
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: StringsManager.enterPassword,
                   label: Text(
                     StringsManager.password,
@@ -109,16 +156,16 @@ class _LoginViewState extends State<LoginView> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   GestureDetector(
-                    child: Text(
-                      StringsManager.ForgotPassword,
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
                     onTap: (() => {
-                          Navigator.pushReplacementNamed(
+                          Navigator.pushNamed(
                             context,
                             RoutesManager.forgotPasswordRoute,
                           )
                         }),
+                    child: Text(
+                      StringsManager.ForgotPassword,
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
                   ),
                 ],
               ),
@@ -127,11 +174,7 @@ class _LoginViewState extends State<LoginView> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(
-                    context,
-                    RoutesManager.mainRoute,
-                  );
-                  // login(emailContoller.text, passwordContoller.text);
+                  login(emailContoller.text, passwordContoller.text);
                 },
                 child: const Text(
                   StringsManager.login,
@@ -161,7 +204,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: MarginsManager.marginBetweenSections,
               ),
               Row(
@@ -172,7 +215,7 @@ class _LoginViewState extends State<LoginView> {
                     StringsManager.dontHaveAccount,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: MarginsManager.marginBetweenSectionsViews,
                   ),
                   GestureDetector(

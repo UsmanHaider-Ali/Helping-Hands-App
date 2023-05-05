@@ -5,6 +5,7 @@ import 'package:helping_hands_app/screens/campaign/all_campaigns_view.dart';
 import 'package:helping_hands_app/screens/campaign/my_campaigns.dart';
 import 'package:helping_hands_app/screens/conservations/conservations.dart';
 import 'package:helping_hands_app/screens/projects/projects_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../resources/assets_manager.dart';
 import '../../resources/dimens_manager.dart';
@@ -148,8 +149,7 @@ class _MainViewState extends State<MainView> {
               ),
               title: const Text('Logout'),
               onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(context, RoutesManager.loginRoute);
+                logoutUser(context);
               },
             ),
           ],
@@ -198,4 +198,15 @@ class _MainViewState extends State<MainView> {
       ),
     );
   }
+}
+
+Future<void> logoutUser(BuildContext context) async {
+  SharedPreferences userDetail = await SharedPreferences.getInstance();
+  userDetail.setString('id', "");
+  userDetail.setString('type', "");
+  userDetail.setBool('isUserLoggedIn', false);
+
+  Navigator.pop(context);
+  Navigator.pushNamed(context, RoutesManager.loginRoute);
+
 }
