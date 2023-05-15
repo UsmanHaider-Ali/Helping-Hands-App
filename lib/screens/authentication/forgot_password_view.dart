@@ -6,7 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../network/ApiResponse.dart';
+import '../../network/APIs.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/dimens_manager.dart';
 import '../../resources/routes_manager.dart';

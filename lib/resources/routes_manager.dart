@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:helping_hands_app/screens/about_us/about_us_view.dart';
-import 'package:helping_hands_app/screens/campaign_details/campaign_details_view.dart';
-import 'package:helping_hands_app/screens/discussion/post_question_view.dart';
-import 'package:helping_hands_app/screens/favourite/favourite_view.dart';
-import 'package:helping_hands_app/screens/privacy_policy/privacy_policy_view.dart';
-import 'package:helping_hands_app/screens/profile/update_user_profile_view.dart';
-import 'package:helping_hands_app/screens/profile/user_profile_view.dart';
-import 'package:helping_hands_app/screens/projects/project_details_view.dart';
-import 'package:helping_hands_app/screens/success_stories/success_stories_view.dart';
-import 'package:helping_hands_app/screens/terms_conditions/terms_conditions_view.dart';
-import 'package:helping_hands_app/screens/transaction/transaction_details_view.dart';
-import 'package:helping_hands_app/screens/transaction/transactions_history_view.dart';
 
+import '/screens/about_us/about_us_view.dart';
+import '/screens/campaign_details/campaign_details_view.dart';
+import '/screens/discussion/post_question_view.dart';
+import '/screens/favourite/favourite_view.dart';
+import '/screens/privacy_policy/privacy_policy_view.dart';
+import '/screens/profile/update_user_profile_view.dart';
+import '/screens/profile/user_profile_view.dart';
+import '/screens/projects/project_details_view.dart';
+import '/screens/success_stories/success_stories_view.dart';
+import '/screens/terms_conditions/terms_conditions_view.dart';
+import '/screens/transaction/transaction_details_view.dart';
+import '/screens/transaction/transactions_history_view.dart';
 import '../screens/authentication/forgot_password_view.dart';
 import '../screens/authentication/login_view.dart';
 import '../screens/authentication/otp_view.dart';
-import '../screens/authentication/registration_first_view.dart';
+import '../screens/authentication/registration_view.dart';
 import '../screens/authentication/registration_second_view.dart';
 import '../screens/campaign/create_campaign.dart';
 import '../screens/chat/chat_details_view.dart';
@@ -33,7 +33,6 @@ class RoutesManager {
   static const String onBoardingRoute = '/onBoarding';
   static const String loginRoute = '/login';
   static const String registerRoute = '/register';
-  static const String userTypeRoute = '/userType';
   static const String otpRoute = '/otp';
   static const String forgotPasswordRoute = '/forgotPassword';
   static const String updatePasswordRoute = '/updatePassword';
@@ -64,51 +63,47 @@ class RoutesGenerator {
     switch (routeSettings.name) {
       case RoutesManager.splashRoute:
         return MaterialPageRoute(
-          builder: (_) => SplashView(),
+          builder: (_) => const SplashView(),
         );
       case RoutesManager.onBoardingRoute:
         return MaterialPageRoute(
-          builder: (_) => OnBoardingView(),
+          builder: (_) => const OnBoardingView(),
         );
       case RoutesManager.loginRoute:
         return MaterialPageRoute(
-          builder: (_) => LoginView(),
+          builder: (_) => const LoginView(),
         );
       case RoutesManager.registerRoute:
         return MaterialPageRoute(
-          builder: (_) => RegistrationFirstView(),
-        );
-      case RoutesManager.userTypeRoute:
-        return MaterialPageRoute(
-          builder: (_) => RegistrationSecondView(),
+          builder: (_) => const RegistrationView(),
         );
       case RoutesManager.otpRoute:
         return MaterialPageRoute(
-          builder: (_) => OTPView(),
+          builder: (_) => const OTPView(),
         );
       case RoutesManager.forgotPasswordRoute:
         return MaterialPageRoute(
-          builder: (_) => ForgotPasswordView(),
+          builder: (_) => const ForgotPasswordView(),
         );
       case RoutesManager.updatePasswordRoute:
         return MaterialPageRoute(
-          builder: (_) => UpdatePasswordView(),
+          builder: (_) => const UpdatePasswordView(),
         );
       case RoutesManager.mainRoute:
         return MaterialPageRoute(
-          builder: (_) => MainView(),
+          builder: (_) => const MainView(),
         );
       case RoutesManager.startCampaignRoute:
         return MaterialPageRoute(
-          builder: (_) => CreateCampaign(),
+          builder: (_) => const CreateCampaign(),
         );
       case RoutesManager.campaignDetailRoute:
         return MaterialPageRoute(
-          builder: (_) => CampaignDetailsView(),
+          builder: (_) => const CampaignDetailsView(),
         );
       case RoutesManager.chatRoute:
         return MaterialPageRoute(
-          builder: (_) => ChatView(),
+          builder: (_) => const ChatView(),
         );
       case RoutesManager.discussionRoute:
         return MaterialPageRoute(
@@ -116,55 +111,55 @@ class RoutesGenerator {
         );
       case RoutesManager.discussionChatRoute:
         return MaterialPageRoute(
-          builder: (_) => QuestionDetailsView(),
+          builder: (_) => const QuestionDetailsView(),
         );
       case RoutesManager.chatDetailRoute:
         return MaterialPageRoute(
-          builder: (_) => ChatDetailsView(),
+          builder: (_) => const ChatDetailsView(),
         );
       case RoutesManager.userProfileRoute:
         return MaterialPageRoute(
-          builder: (_) => UserProfileView(),
+          builder: (_) => const UserProfileView(),
         );
       case RoutesManager.updateUserProfileRoute:
         return MaterialPageRoute(
-          builder: (_) => UpdateUserProfileView(),
+          builder: (_) => const UpdateUserProfileView(),
         );
       case RoutesManager.favouriteRoute:
         return MaterialPageRoute(
-          builder: (_) => FavouriteView(),
+          builder: (_) => const FavouriteView(),
         );
       case RoutesManager.privacyPolicyRoute:
         return MaterialPageRoute(
-          builder: (_) => PrivacyPolicyView(),
+          builder: (_) => const PrivacyPolicyView(),
         );
       case RoutesManager.termsConditionsRoute:
         return MaterialPageRoute(
-          builder: (_) => TermsConditionsView(),
+          builder: (_) => const TermsConditionsView(),
         );
       case RoutesManager.aboutUsRoute:
         return MaterialPageRoute(
-          builder: (_) => AboutUsView(),
+          builder: (_) => const AboutUsView(),
         );
       case RoutesManager.transactionsHistoryRoute:
         return MaterialPageRoute(
-          builder: (_) => TransactionsHistoryView(),
+          builder: (_) => const TransactionsHistoryView(),
         );
       case RoutesManager.transactionDetailsRoute:
         return MaterialPageRoute(
-          builder: (_) => TransactionDetailsView(),
+          builder: (_) => const TransactionDetailsView(),
         );
       case RoutesManager.successStoriesRoute:
         return MaterialPageRoute(
-          builder: (_) => SuccessStoriesView(),
+          builder: (_) => const SuccessStoriesView(),
         );
       case RoutesManager.projectDetailsRoute:
         return MaterialPageRoute(
-          builder: (_) => ProjectDetailsView(),
+          builder: (_) => const ProjectDetailsView(),
         );
       case RoutesManager.postQuestionRoute:
         return MaterialPageRoute(
-          builder: (_) => PostQuestionView(),
+          builder: (_) => const PostQuestionView(),
         );
       default:
         return unDefined();

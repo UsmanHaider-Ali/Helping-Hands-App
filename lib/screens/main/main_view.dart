@@ -20,11 +20,11 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   int _selectedIndex = 0;
 
-  List<Widget> _menuScreens = <Widget>[
-    AllCampaignsView(),
-    MyCampaigns(),
-    ProjectsView(),
-    Conservations(),
+  final List<Widget> _menuScreens = <Widget>[
+    const AllCampaignsView(),
+    const MyCampaigns(),
+    const ProjectsView(),
+    const Conservations(),
   ];
 
   void _onBottomNavClick(int index) {
@@ -45,13 +45,13 @@ class _MainViewState extends State<MainView> {
               child: Column(
                 children: [
                   CircleAvatar(
-                    backgroundImage: AssetImage(
+                    backgroundImage:const AssetImage(
                       ImageAssetsManager.appLogo,
                     ),
                     backgroundColor: ColorsManager.screenColor,
                     radius: ValuesManager.imagePicker,
                   ),
-                  SizedBox(
+               const   SizedBox(
                     height: 8,
                   ),
                   Text(
@@ -62,7 +62,7 @@ class _MainViewState extends State<MainView> {
               ),
             ),
             ListTile(
-              leading: Icon(
+              leading:const Icon(
                 Icons.home,
               ),
               title: const Text('Home'),
@@ -72,7 +72,7 @@ class _MainViewState extends State<MainView> {
               },
             ),
             ListTile(
-              leading: Icon(
+              leading:const Icon(
                 Icons.person,
               ),
               title: const Text('Profile'),
@@ -82,7 +82,7 @@ class _MainViewState extends State<MainView> {
               },
             ),
             ListTile(
-              leading: Icon(
+              leading:const Icon(
                 Icons.favorite,
               ),
               title: const Text('Favourite'),
@@ -92,18 +92,7 @@ class _MainViewState extends State<MainView> {
               },
             ),
             ListTile(
-              leading: Icon(
-                Icons.history,
-              ),
-              title: const Text('Transaction History'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pushNamed(
-                    context, RoutesManager.transactionsHistoryRoute);
-              },
-            ),
-            ListTile(
-              leading: Icon(
+              leading:const Icon(
                 Icons.auto_stories,
               ),
               title: const Text('Success Stories'),
@@ -113,7 +102,18 @@ class _MainViewState extends State<MainView> {
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
+                Icons.history,
+              ),
+              title: const Text('Transactions History'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(
+                    context, RoutesManager.transactionsHistoryRoute);
+              },
+            ),
+            ListTile(
+              leading: const Icon(
                 Icons.article_rounded,
               ),
               title: const Text('Terms and Conditions'),
@@ -124,7 +124,7 @@ class _MainViewState extends State<MainView> {
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.privacy_tip,
               ),
               title: const Text('Privacy Policy'),
@@ -134,7 +134,7 @@ class _MainViewState extends State<MainView> {
               },
             ),
             ListTile(
-              leading: Icon(
+              leading:const Icon(
                 Icons.supervised_user_circle_rounded,
               ),
               title: const Text('About Us'),
@@ -144,7 +144,7 @@ class _MainViewState extends State<MainView> {
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.logout,
               ),
               title: const Text('Logout'),
@@ -206,7 +206,5 @@ Future<void> logoutUser(BuildContext context) async {
   userDetail.setString('type', "");
   userDetail.setBool('isUserLoggedIn', false);
 
-  Navigator.pop(context);
-  Navigator.pushNamed(context, RoutesManager.loginRoute);
-
+  Navigator.pushReplacementNamed(context, RoutesManager.loginRoute);
 }

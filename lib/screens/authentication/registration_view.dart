@@ -9,14 +9,14 @@ import '../../resources/colors_manager.dart';
 import '../../resources/routes_manager.dart';
 import '../../resources/strings_manager.dart';
 
-class RegistrationFirstView extends StatefulWidget {
-  const RegistrationFirstView({super.key});
+class RegistrationView extends StatefulWidget {
+  const RegistrationView({super.key});
 
   @override
-  State<RegistrationFirstView> createState() => _RegistrationFirstViewState();
+  State<RegistrationView> createState() => _RegistrationFirstViewState();
 }
 
-class _RegistrationFirstViewState extends State<RegistrationFirstView> {
+class _RegistrationFirstViewState extends State<RegistrationView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +36,7 @@ class _RegistrationFirstViewState extends State<RegistrationFirstView> {
                 StringsManager.registerScreenTitle,
                 style: Theme.of(context).textTheme.titleMedium,
               ),
-              SizedBox(
+              const SizedBox(
                 height: MarginsManager.marginBetweenSectionsViews,
               ),
               Text(
@@ -48,7 +48,7 @@ class _RegistrationFirstViewState extends State<RegistrationFirstView> {
                 height: MarginsManager.marginBetweenSections,
               ),
               CircleAvatar(
-                backgroundImage: AssetImage(
+                backgroundImage: const AssetImage(
                   ImageAssetsManager.appLogo,
                 ),
                 backgroundColor: ColorsManager.screenColor,
@@ -57,7 +57,7 @@ class _RegistrationFirstViewState extends State<RegistrationFirstView> {
               const SizedBox(
                 height: MarginsManager.marginBetweenSectionsViews,
               ),
-              TextField(
+              const TextField(
                 decoration: InputDecoration(
                   hintText: StringsManager.enterName,
                   label: Text(
@@ -68,7 +68,7 @@ class _RegistrationFirstViewState extends State<RegistrationFirstView> {
               const SizedBox(
                 height: MarginsManager.marginBetweenSectionsViews,
               ),
-              TextField(
+              const TextField(
                 decoration: InputDecoration(
                   hintText: StringsManager.enterEmail,
                   label: Text(
@@ -79,7 +79,7 @@ class _RegistrationFirstViewState extends State<RegistrationFirstView> {
               const SizedBox(
                 height: MarginsManager.marginBetweenSectionsViews,
               ),
-              TextField(
+              const TextField(
                 decoration: InputDecoration(
                   hintText: StringsManager.enterPhone,
                   label: Text(
@@ -90,7 +90,7 @@ class _RegistrationFirstViewState extends State<RegistrationFirstView> {
               const SizedBox(
                 height: MarginsManager.marginBetweenSectionsViews,
               ),
-              TextField(
+              const TextField(
                 obscureText: true,
                 decoration: InputDecoration(
                   hintText: StringsManager.selectDateOfBirth,
@@ -102,7 +102,7 @@ class _RegistrationFirstViewState extends State<RegistrationFirstView> {
               const SizedBox(
                 height: MarginsManager.marginBetweenSectionsViews,
               ),
-              TextField(
+              const TextField(
                 decoration: InputDecoration(
                   hintText: StringsManager.enterAddress,
                   label: Text(
@@ -115,12 +115,12 @@ class _RegistrationFirstViewState extends State<RegistrationFirstView> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(
-                    context,
-                    RoutesManager.userTypeRoute,
-                  );
+                  // Navigator.pushReplacementNamed(
+                  //   context,
+                  //   RoutesManager.userTypeRoute,
+                  // );
                 },
-                child: Text(
+                child: const Text(
                   StringsManager.next,
                 ),
               ),
@@ -148,7 +148,7 @@ class _RegistrationFirstViewState extends State<RegistrationFirstView> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: MarginsManager.marginBetweenSections,
               ),
               Row(
@@ -159,7 +159,7 @@ class _RegistrationFirstViewState extends State<RegistrationFirstView> {
                     StringsManager.alreadyHaveAccount,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: MarginsManager.marginBetweenSectionsViews,
                   ),
                   GestureDetector(

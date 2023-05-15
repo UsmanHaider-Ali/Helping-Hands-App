@@ -2,16 +2,15 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:helping_hands_app/network/ApiResponse.dart';
-import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:helping_hands_app/network/APIs.dart';
+import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../resources/assets_manager.dart';
 import '../../resources/dimens_manager.dart';
 import '../../resources/routes_manager.dart';
 import '../../resources/strings_manager.dart';
-import 'package:http/http.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -21,8 +20,8 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final emailContoller = TextEditingController();
-  final passwordContoller = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   void login(String email, password) async {
     try {
@@ -33,7 +32,7 @@ class _LoginViewState extends State<LoginView> {
         var data = jsonDecode(response.body.toString());
 
         if (data['message'] == 'User login successfully.') {
-          Map<String, dynamic> user = data['data'];
+          Map<String, dynamic> user = data['user'];
           String id = user['id'];
           String walletKey = user['wallet_key'];
           String image = user['image'];
@@ -43,7 +42,6 @@ class _LoginViewState extends State<LoginView> {
           String phone = user['phone'];
           bool isPhoneVerified = user['isPhoneVerified'];
           String address = user['address'];
-          String addressDetails = user['addressDetails'];
           String latitude = user['latitude'];
           String longitude = user['longitude'];
           String dateOfBirth = user['date_of_birth'];
@@ -78,7 +76,7 @@ class _LoginViewState extends State<LoginView> {
       }
     } catch (e) {
       Fluttertoast.showToast(
-          msg: e.toString(),
+          msg: "Catch Errror: " + e.toString(),
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,
@@ -128,7 +126,7 @@ class _LoginViewState extends State<LoginView> {
                 height: MarginsManager.marginBetweenSections,
               ),
               TextField(
-                controller: emailContoller,
+                controller: emailController,
                 decoration: const InputDecoration(
                   hintText: StringsManager.enterEmail,
                   label: Text(
@@ -140,7 +138,7 @@ class _LoginViewState extends State<LoginView> {
                 height: MarginsManager.marginBetweenSectionsViews,
               ),
               TextField(
-                controller: passwordContoller,
+                controller: passwordController,
                 obscureText: true,
                 decoration: const InputDecoration(
                   hintText: StringsManager.enterPassword,
@@ -174,7 +172,7 @@ class _LoginViewState extends State<LoginView> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  login(emailContoller.text, passwordContoller.text);
+                  login(emailController.text, passwordController.text);
                 },
                 child: const Text(
                   StringsManager.login,

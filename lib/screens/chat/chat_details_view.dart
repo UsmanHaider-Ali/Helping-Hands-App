@@ -8,7 +8,7 @@ import '../../dummy_data.dart';
 import '../../resources/colors_manager.dart';
 
 class ChatDetailsView extends StatefulWidget {
-  ChatDetailsView({Key? key}) : super(key: key);
+  const ChatDetailsView({Key? key}) : super(key: key);
 
   @override
   State<ChatDetailsView> createState() => _ChatDetailsViewState();
