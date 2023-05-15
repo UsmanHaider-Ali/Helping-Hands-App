@@ -3,7 +3,7 @@ class MarginsManager {
   static const double topMarginWithoutAppBar = 100.0;
 
   static const double marginBetweenSections = 24.0;
-  static const double marginBetweenSectionsViews = 12.0;
+  static const double marginBetweenSectionsViews = 16.0;
 }
 
 class PaddingsManager {
@@ -13,7 +13,7 @@ class PaddingsManager {
   static const double indicatorHorizontalPadding = 4.0;
 
   static const double inputFieldHorizontalPadding = 16.0;
-  static const double inputFieldVerticalPadding = 8.0;
+  static const double inputFieldVerticalPadding = 16.0;
 }
 
 class DurationConstantsManager {

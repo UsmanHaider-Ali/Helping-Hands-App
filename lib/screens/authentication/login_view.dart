@@ -3,10 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:helping_hands_app/network/APIs.dart';
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../models/user/User.dart';
+import '../../network/APIs.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/dimens_manager.dart';
 import '../../resources/routes_manager.dart';
@@ -22,51 +23,41 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  bool isLoading = false;
 
   void login(String email, password) async {
+    setState(() {
+      isLoading = true;
+    });
+
     try {
       Response response = await post(Uri.parse(APIs.loginUser),
           body: {'email': email, 'password': password});
+      final jsonResponse = json.decode(response.body);
 
-      if (response.statusCode == 200) {
-        var data = jsonDecode(response.body.toString());
+      var message = jsonResponse['message'];
 
-        if (data['message'] == 'User login successfully.') {
-          Map<String, dynamic> user = data['user'];
-          String id = user['id'];
-          String walletKey = user['wallet_key'];
-          String image = user['image'];
-          String name = user['name'];
-          String email = user['email'];
-          bool isEmailVerified = user['isEmailVerified'];
-          String phone = user['phone'];
-          bool isPhoneVerified = user['isPhoneVerified'];
-          String address = user['address'];
-          String latitude = user['latitude'];
-          String longitude = user['longitude'];
-          String dateOfBirth = user['date_of_birth'];
-          String userType = user['user_type'];
-          String token = user['token'];
+      if (message == "User login successfully.") {
+        final user = User.fromJson(jsonResponse['user']);
 
-          SharedPreferences userDetail = await SharedPreferences.getInstance();
-          userDetail.setString('id', id);
-          userDetail.setString('type', userType);
-          userDetail.setBool('isUserLoggedIn', true);
+        SharedPreferences userDetail = await SharedPreferences.getInstance();
 
+        userDetail.setString('id', user.id);
+        userDetail.setBool('isUserLoggedIn', true);
+
+        WidgetsBinding.instance.addPostFrameCallback((_) {
           Navigator.pushNamed(context, RoutesManager.mainRoute);
-        } else {
-          Fluttertoast.showToast(
-              msg: data['message'],
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.BOTTOM,
-              timeInSecForIosWeb: 1,
-              backgroundColor: Colors.grey,
-              textColor: Colors.white,
-              fontSize: 16.0);
-        }
+        });
+
+        setState(() {
+          isLoading = false;
+        });
       } else {
+        setState(() {
+          isLoading = false;
+        });
         Fluttertoast.showToast(
-            msg: "Something wrong, please try again",
+            msg: message,
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 1,
@@ -75,8 +66,11 @@ class _LoginViewState extends State<LoginView> {
             fontSize: 16.0);
       }
     } catch (e) {
+      setState(() {
+        isLoading = false;
+      });
       Fluttertoast.showToast(
-          msg: "Catch Errror: " + e.toString(),
+          msg: e.toString(),
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,
@@ -127,6 +121,7 @@ class _LoginViewState extends State<LoginView> {
               ),
               TextField(
                 controller: emailController,
+                style: Theme.of(context).textTheme.bodyLarge,
                 decoration: const InputDecoration(
                   hintText: StringsManager.enterEmail,
                   label: Text(
@@ -140,6 +135,7 @@ class _LoginViewState extends State<LoginView> {
               TextField(
                 controller: passwordController,
                 obscureText: true,
+                style: Theme.of(context).textTheme.bodyLarge,
                 decoration: const InputDecoration(
                   hintText: StringsManager.enterPassword,
                   label: Text(
@@ -171,12 +167,21 @@ class _LoginViewState extends State<LoginView> {
                 height: MarginsManager.marginBetweenSectionsViews,
               ),
               ElevatedButton(
-                onPressed: () {
-                  login(emailController.text, passwordController.text);
-                },
-                child: const Text(
-                  StringsManager.login,
-                ),
+                onPressed: isLoading
+                    ? null
+                    : () {
+                        login(emailController.text, passwordController.text);
+                      },
+                child: isLoading
+                    ? const Padding(
+                        padding: EdgeInsets.all(4.0),
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                        ),
+                      )
+                    : const Text(
+                        StringsManager.login,
+                      ),
               ),
               const SizedBox(
                 height: MarginsManager.marginBetweenSections,
@@ -222,7 +227,7 @@ class _LoginViewState extends State<LoginView> {
                       style: Theme.of(context).textTheme.labelMedium,
                     ),
                     onTap: () => {
-                      Navigator.pushReplacementNamed(
+                      Navigator.pushNamed(
                         context,
                         RoutesManager.registerRoute,
                       ),

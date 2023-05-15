@@ -12,4 +12,5 @@ class ImageAssetsManager {
 
   static const String facebookIcon = '${imagesBasePath}facebook_icon.svg';
   static const String googleIcon = '${imagesBasePath}google_icon.svg';
+  static const String defaultUser = '${imagesBasePath}default_user.png';
 }

@@ -117,6 +117,7 @@ ThemeData getApplicationTheme() {
     bottomSheetTheme: BottomSheetThemeData(
       backgroundColor: ColorsManager.appBarColor,
     ),
+
     //inputDecorationTheme
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: const EdgeInsets.symmetric(
